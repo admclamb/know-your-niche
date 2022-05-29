@@ -1,0 +1,28 @@
+.navList {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-block: auto;
+}
+
+.navlist li:not(:last-child) {
+  margin-right: 0.4rem;
+}
+
+.navListItem {
+  padding: 0.8rem 0.9rem;
+  color: var(--color-gray-dark-3);
+}
+
+.navListItem:hover {
+  color: var(--color-primary-dark);
+}
+
+.navListItem:not(:last-child) {
+  margin-right: 0.8rem;
+}
+
+.navListItem a {
+  text-decoration: none;
+}

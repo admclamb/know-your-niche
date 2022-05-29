@@ -1,0 +1,30 @@
+.hero {
+  display: flex;
+}
+
+.left {
+  flex-grow: 2;
+}
+
+.right {
+  flex-grow: 1;
+}
+
+.header {
+  color: var(--color-black);
+}
+
+.headerSub {
+  color: var(--color-primary);
+}
+.buttons {
+  margin-top: 2rem;
+}
+
+.buttons a {
+  min-width: 12rem;
+}
+
+.img {
+  width: 90%;
+}

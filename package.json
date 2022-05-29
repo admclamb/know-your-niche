@@ -1,0 +1,11 @@
+{
+  "name": "know-your-niche",
+  "version": "1.0.0",
+  "description": "Application that uses web scraping to gather information about your skills for a local job market.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
