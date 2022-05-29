@@ -8,7 +8,10 @@ const NavList = () => {
         <Link to="/">Home</Link>
       </li>
       <li className={styles.navListItem}>
-        <Link to="/indeed">Home</Link>
+        <Link to="/indeed">Indeed</Link>
+      </li>
+      <li className={styles.navListItem}>
+        <Link to="/upwork">Upwork</Link>
       </li>
       <li className={styles.navListItem}>
         <Link to="/search">Search</Link>

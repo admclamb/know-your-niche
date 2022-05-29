@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from './Hero.module.css';
+import working from './working.svg';
+
 const Hero = () => {
   return (
     <section className={styles.hero}>
@@ -18,14 +20,17 @@ const Hero = () => {
             <Link to="/" className="btn btn-pill btn-primary">
               Start Searching
             </Link>
-            <Link to="/" className="btn btn-pill ms-5 btn-outline-primary">
+            <Link
+              to="/"
+              className="btn btn-pill ms-1 ms-sm-5 btn-outline-primary"
+            >
               Learn More
             </Link>
           </div>
         </div>
       </div>
-      <div className={styles.right}>
-        <img src="./working.svg" alt="Working at desk" className={styles.img} />
+      <div className={`d-none d-lg-block ${styles.right}`}>
+        <img src={working} alt="Working at desk" className={styles.img} />
       </div>
     </section>
   );

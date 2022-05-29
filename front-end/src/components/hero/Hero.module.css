@@ -1,13 +1,16 @@
 .hero {
-  display: flex;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
 }
 
 .left {
-  flex-grow: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.right {
-  flex-grow: 1;
+.main {
+  margin-top: 1rem;
 }
 
 .header {
@@ -26,5 +29,11 @@
 }
 
 .img {
-  width: 90%;
+  width: 100%;
+}
+
+@media screen and (max-width: 992px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
 }
