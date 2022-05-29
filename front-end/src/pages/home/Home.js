@@ -9,7 +9,7 @@ const Home = () => {
       <section className={styles.main}>
         <div className="container">
           <h3 className="text-center">
-            Use your strengths and weaknessess to find your desired job market.
+            Use your strengths and to find your desired job market.
           </h3>
           <div className={styles.features}>
             <article className={styles.featureCard}>
