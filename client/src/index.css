@@ -1,0 +1,143 @@
+*::before,
+*::after,
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 1rem;
+  font-family: 'Roboto', sans-serif;
+  color: var(--color-black);
+}
+
+:root {
+  --color-primary: #55c57a;
+  --color-primary-light: #7ed56f;
+  --color-primary-dark: #28b485;
+  --color-secondary-light: #ffb900;
+  --color-secondary-dark: #ff7730;
+  --color-tri-light: #2998ff;
+  --color-tri-dark: #5643fa;
+  --color-gray-light: #f7f7f7;
+  --color-gray-light-2: #eee;
+  --color-gray-dark: #777;
+  --color-gray-dark-2: #999;
+  --color-gray-dark-3: #333;
+  --color-white: #fff;
+  --color-black: #0a0c0e;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 3.052rem;
+}
+
+h2 {
+  font-size: 2.441rem;
+}
+
+h3 {
+  font-size: 1.953rem;
+}
+
+h4 {
+  font-size: 1.563rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+h6 {
+  font-size: 1.093rem;
+}
+
+p {
+  font-size: 1rem;
+}
+.text-norm {
+  font-size: 1rem;
+}
+
+.text-sm {
+  font-size: 0.8rem;
+}
+
+.text-xsm {
+  font-size: 0.64rem;
+}
+
+.font-1 {
+  font-weight: 100;
+}
+.font-1 {
+  font-weight: 200;
+}
+.font-3 {
+  font-weight: 300;
+}
+.font-4 {
+  font-weight: 400;
+}
+.font-5 {
+  font-weight: 500;
+}
+
+.font-7 {
+  font-weight: 700;
+}
+
+/* Colors */
+.text-gray-dark {
+  color: var(--color-gray-dark);
+}
+
+/* Buttons */
+.btn-pill {
+  border-radius: 10rem;
+  padding: 0.6rem 1.3rem;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+}
+
+.btn-outline-primary {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+/* RESETS  */
+
+a,
+a:hover {
+  color: inherit;
+}
+
+/* Bootstrap resets */
+.navbar-brand {
+  margin: 0;
+  padding: 0;
+  color: var(--color-primary-dark) !important;
+}

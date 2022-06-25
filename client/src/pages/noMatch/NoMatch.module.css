@@ -1,0 +1,28 @@
+.main {
+  background-color: var(--color-gray-light);
+  height: 95vh;
+  width: 100%;
+}
+.main div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.body {
+  padding-top: 10rem;
+}
+
+.imgContainer {
+  width: 15rem;
+  height: 15rem;
+  background-color: var(--color-primary-light);
+  border: solid 1px var(--color-black);
+  border-radius: 100%;
+  padding: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.img {
+  width: 100%;
+}
