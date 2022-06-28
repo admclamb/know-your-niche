@@ -14,14 +14,6 @@ exports.up = function (knex) {
     table.string('last_name').notNullable();
     table.string('about_you');
     table.specificType('skills_languages', 'text ARRAY');
-    table.string('work');
-    table
-      .string('avatar')
-      .defaultTo(
-        'https://devify-app-development.s3.amazonaws.com/default-pfp.png'
-      );
-    table.string('brand_color1').defaultTo('#000000');
-    table.string('brand_color2').defaultTo('#ffffff');
     table.timestamps(true, true);
   });
 };
