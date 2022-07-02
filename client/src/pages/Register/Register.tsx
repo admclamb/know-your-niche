@@ -2,7 +2,8 @@ import { ChangeEvent, FormEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Form from '../../components/Form/Form';
 import FormInput from '../../components/FormInput/FormInput';
-import IError from "../../ts/interfaces/Error";
+import { User } from '../../ts/interfaces/User';
+import { createUser } from '../../api/apiUsers';
 const Register = () => {
   const defaultRegister = {
     first_name: '',
@@ -13,7 +14,7 @@ const Register = () => {
     passwordConfirm: '',
   };
   const [register, setRegister] = useState(defaultRegister);
-  const [error, setError] = useState<IError>({});
+  const [error, setError] = useState<any>({});
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     console.log(name, value);
@@ -25,9 +26,19 @@ const Register = () => {
   const onSubmit = async (event: FormEvent<HTMLInputElement>) => {
     try {
       event.preventDefault();
-      if (register.password !== register.passwordConfirm) {]
-        throw {message: "Passwords does not match"}
+      const abortController = new AbortController();
+      if (register.password !== register.passwordConfirm) {
+        throw { message: 'Passwords does not match' };
       }
+      const user: User = {
+        first_name: register.first_name,
+        last_name: register.last_name,
+        username: register.username,
+        email: register.email,
+        password: register.password,
+      };
+      const response = await createUser(user, abortController.signal);
+      console.log(response);
     } catch (error) {
       setError(error);
     }
@@ -84,7 +95,7 @@ const Register = () => {
           <div className="mb-3">
             <p>
               Already have an account?
-              <Link to="/register" className="ms-1">
+              <Link to="/login" className="ms-1">
                 Log In Here
               </Link>
             </p>

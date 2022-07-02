@@ -6,5 +6,9 @@ headers.append('Content-Type', 'application/json');
 
 export function createUser(user: User, signal: AbortSignal) {
   const URL = `${API_BASE_URL}/users`;
-  return axios.post(URL, { data: user }, { headers });
+  return axios.post(
+    URL,
+    { data: user },
+    { headers: { 'Content-Type': 'application/json' } }
+  );
 }
