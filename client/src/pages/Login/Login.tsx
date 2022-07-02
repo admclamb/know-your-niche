@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Form from '../../components/Form/Form';
 import FormInput from '../../components/FormInput/FormInput';
@@ -10,7 +10,14 @@ const Login = () => {
     password: '',
   };
   const [login, setLogin] = useState<ILogin>(defaultLogin);
-  const handleChange = (event: FormEvent<HTMLInputElement>) => {};
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    console.log(name, value);
+    setLogin({
+      ...login,
+      [name]: value,
+    });
+  };
   const onSubmit = () => {};
   return (
     <section className="row">
@@ -21,11 +28,11 @@ const Login = () => {
             name="email"
             label="Email address"
             type="email"
-            value={defaultLogin.email}
+            value={login.email}
             handleChange={handleChange}
           />
           <FormInput
-            name="pasword"
+            name="password"
             type="password"
             label="Password"
             value={login.password}
