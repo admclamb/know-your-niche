@@ -1,3 +1,5 @@
+import React from 'react';
+
 import styles from './NoMatch.module.css';
 import taken from './taken.svg';
 const NoMatch = () => {

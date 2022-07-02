@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Form from '../../components/Form/Form';
+import FormInput from '../../components/FormInput/FormInput';
 import { ILogin } from '../../ts/interfaces/Login';
 
 const Login = () => {
@@ -9,29 +10,27 @@ const Login = () => {
     password: '',
   };
   const [login, setLogin] = useState<ILogin>(defaultLogin);
+  const handleChange = (event: FormEvent<HTMLInputElement>) => {};
   const onSubmit = () => {};
   return (
     <section className="row">
       <h2 className="text-center mb-2">Welcome Back</h2>
       <section className="col-12 col-sm-11 col-md-5 ms-auto me-auto border rounded">
         <Form onSubmit={onSubmit}>
-          <div className="mb-3">
-            <label htmlFor="email" className="form-label">
-              Email address
-            </label>
-            <input
-              type="email"
-              className="form-control"
-              id="email"
-              aria-describedby="emailHelp"
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="password" className="form-label">
-              Password
-            </label>
-            <input type="password" className="form-control" id="password" />
-          </div>
+          <FormInput
+            name="email"
+            label="Email address"
+            type="email"
+            value={defaultLogin.email}
+            handleChange={handleChange}
+          />
+          <FormInput
+            name="pasword"
+            type="password"
+            label="Password"
+            value={login.password}
+            handleChange={handleChange}
+          />
           <div className="mb-3">
             <p>
               Don't have an account?

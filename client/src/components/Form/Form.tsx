@@ -9,7 +9,7 @@ const Form = (props: Props) => {
     <form className="p-3">
       {props.children}
       <button type="submit" className="btn btn-primary w-100">
-        Submit
+        Continue
       </button>
     </form>
   );
