@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 
-function hasRequiredProperties(PROPERTIES: []) {
+export function hasRequiredProperties(PROPERTIES: string[]) {
   return function (req: Request, res: Response, next: NextFunction) {
     const { data = {} } = req.body;
     try {
@@ -18,5 +18,3 @@ function hasRequiredProperties(PROPERTIES: []) {
     }
   };
 }
-
-module.exports = hasRequiredProperties;

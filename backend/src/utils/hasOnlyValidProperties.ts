@@ -1,10 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
 
-function hasOnlyValidProperties(PROPERTIES: []) {
+export function hasOnlyValidProperties(PROPERTIES: string[]) {
   return function (req: Request, res: Response, next: NextFunction) {
     const { data = {} } = req.body;
     const invalidFields = Object.keys(data).filter(
-      (field) => !PROPERTIES.includes(field)
+      (field: string) => !PROPERTIES.includes(field)
     );
     if (invalidFields.length) {
       return next({
@@ -15,5 +15,3 @@ function hasOnlyValidProperties(PROPERTIES: []) {
     return next();
   };
 }
-
-module.exports = hasOnlyValidProperties;
