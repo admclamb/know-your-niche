@@ -5,12 +5,8 @@
   margin-bottom: 0;
 }
 
-.navlist li:not(:last-child) {
-  margin-right: 0.4rem;
-}
-
 .navListItem {
-  padding: 0.8rem 0.9rem;
+  padding: 0.3rem 0.7rem;
   color: var(--color-gray-dark-3);
 }
 
@@ -18,10 +14,20 @@
   color: var(--color-primary-dark);
 }
 
-.navListItem:not(:last-child) {
+.navListItem:not(:last-child),
+.pillBtn:not(:last-child) {
   margin-right: 0.8rem;
 }
 
 .navListItem a {
+  text-decoration: none;
+}
+
+.pillBtn {
+  padding: 0.3rem 0.7rem;
+  min-width: 7rem;
+}
+
+.pillBtn a {
   text-decoration: none;
 }

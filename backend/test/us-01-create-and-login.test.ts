@@ -83,7 +83,7 @@ describe('US-01 login and register users', () => {
         expect(response.body.error).to.contain('password');
       });
 
-      test('Should return 401 if username is not found', async () => {
+      test('Should return 404 if username is not found', async () => {
         const data = {
           email: 'thisisnotarealemail@mail.com',
           password: '1111Abc',
@@ -93,13 +93,13 @@ describe('US-01 login and register users', () => {
           .set('Accept', 'application/json')
           .send({ data });
 
-        expect(response.status).to.equal(401);
+        expect(response.status).to.equal(404);
         expect(response.body.error).to.equal(
           'username and or password is incorrect.'
         );
       });
 
-      test('Should return 401 if password is incorrect', async () => {
+      test('Should return 404 if password is incorrect', async () => {
         const data = {
           email: 'ricksanchez@mail.com',
           password: 'thisisnotacorrectpassword',
@@ -110,7 +110,7 @@ describe('US-01 login and register users', () => {
           .set('Accept', 'application/json')
           .send({ data });
 
-        expect(response.status).to.equal(401);
+        expect(response.status).to.equal(404);
         expect(response.body.error).to.equal(
           'username and or password is incorrect.'
         );

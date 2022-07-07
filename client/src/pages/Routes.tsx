@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './home/Home';
 import Login from './Login/Login';
 import Register from './Register/Register';
-import NoMatch from './noMatch/NoMatch';
+import NoMatch from './NoMatch/NoMatch';
 const PageRoutes = () => {
   return (
     <Routes>

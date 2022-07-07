@@ -28,8 +28,10 @@ async function validatePassword(
 
 async function createToken(req: Request, res: Response, next: NextFunction) {}
 
-export const login = [
-  asyncErrorBoundary(userExist),
-  asyncErrorBoundary(validatePassword),
-  asyncErrorBoundary(createToken),
-];
+export const controller = {
+  login: [
+    asyncErrorBoundary(userExist),
+    asyncErrorBoundary(validatePassword),
+    asyncErrorBoundary(createToken),
+  ],
+};

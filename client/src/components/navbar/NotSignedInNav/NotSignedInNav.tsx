@@ -10,11 +10,11 @@ const NotSignedInNav = () => {
       <li className={styles.navListItem}>
         <Link to="/about">About</Link>
       </li>
-      <li className={styles.navListItem}>
-        <Link to="/login">Login</Link>
-      </li>
-      <li className={styles.navListItem}>
+      <li className={` ${styles.pillBtn} btn btn-pill btn-outline-primary`}>
         <Link to="/register">Sign up</Link>
+      </li>
+      <li className={` ${styles.pillBtn} btn btn-pill btn-primary`}>
+        <Link to="/login">Login</Link>
       </li>
     </ul>
   );

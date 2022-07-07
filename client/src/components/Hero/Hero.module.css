@@ -26,6 +26,7 @@
 
 .buttons a {
   min-width: 12rem;
+  padding: 0.6rem 1.3em;
 }
 
 .img {

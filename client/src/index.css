@@ -106,7 +106,10 @@ p {
 /* Buttons */
 .btn-pill {
   border-radius: 10rem;
-  padding: 0.6rem 1.3rem;
+}
+
+.btn-wide {
+  min-width: 12rem;
 }
 
 .btn-primary {

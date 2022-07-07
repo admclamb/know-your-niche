@@ -8,18 +8,22 @@ const PROFILES_TABLE = 'users_profiles';
 function readEmail(email: string) {
   return knex(USERS_TABLE)
     .select('email', 'username', 'user_id')
-    .where({ email });
+    .where({ email })
+    .first();
 }
 
 function readUsername(username: string) {
   return knex(USERS_TABLE)
     .select('email', 'username', 'user_id')
-    .where({ username });
+    .where({ username })
+    .first();
 }
 
 async function create(user: User) {
   const { email, username, password } = user;
   const { first_name, last_name } = user;
+  console.log('user: ', email, username, password);
+  console.log(first_name, last_name);
   try {
     return knex.transaction(async (trx: any) => {
       const createdUser = await trx(USERS_TABLE)
@@ -28,15 +32,17 @@ async function create(user: User) {
           username,
           password,
         })
-        .returning('username', 'email', 'user_id')
-        .then((data: any) => (Array.isArray(data) ? data[0] : data));
+        .returning('*')
+        .then((createdUser: any) => createdUser[0]);
+      console.log('Created User: ', createdUser);
       const createdProfile = await trx(PROFILES_TABLE)
         .insert({
           first_name,
           last_name,
           user_id: createdUser['user_id'],
         })
-        .returning('*');
+        .returning('*')
+        .then((createdProfile: any) => createdProfile[0]);
       return { ...createdUser, ...createdProfile };
     });
   } catch (error) {
