@@ -9,7 +9,7 @@ const App = () => {
         <Navbar />
       </header>
       <main>
-        <PageRoutes />
+        <PageRoutes user={null} />
       </main>
       <footer>
         <Footer />
