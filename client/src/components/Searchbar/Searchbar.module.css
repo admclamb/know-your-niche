@@ -1,0 +1,12 @@
+.form {
+  position: relative;
+}
+
+.input {
+}
+
+.btn {
+  position: absolute;
+  top: 0%;
+  right: 0%;
+}
