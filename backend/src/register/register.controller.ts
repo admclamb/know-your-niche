@@ -1,22 +1,23 @@
-import { service } from './register.service';
-import { Request, Response, NextFunction } from 'express';
-import { asyncErrorBoundary } from '../errors/asyncErrorBoundary';
-import { hasOnlyValidProperties } from '../utils/hasOnlyValidProperties';
-import { hasRequiredProperties } from '../utils/hasRequiredProperties';
-import { sign } from 'jsonwebtoken';
-import * as bcrypt from 'bcryptjs';
+import { service } from "./register.service";
+import { Request, Response, NextFunction } from "express";
+import { asyncErrorBoundary } from "../errors/asyncErrorBoundary";
+import { hasOnlyValidProperties } from "../utils/hasOnlyValidProperties";
+import { hasRequiredProperties } from "../utils/hasRequiredProperties";
+import { sign } from "jsonwebtoken";
+import cookie from "cookie";
+import * as bcrypt from "bcryptjs";
 const REQUIRED_PROPERTIES = [
-  'email',
-  'username',
-  'password',
-  'first_name',
-  'last_name',
+  "email",
+  "username",
+  "password",
+  "first_name",
+  "last_name",
 ];
 
-const ALLOWED_PROPERTIES = [...REQUIRED_PROPERTIES, 'skills'];
+const ALLOWED_PROPERTIES = [...REQUIRED_PROPERTIES, "skills"];
 
 async function emailExist(req: Request, res: Response, next: NextFunction) {
-  const { email = '' } = req.body.data;
+  const { email = "" } = req.body.data;
   const emailExist = await service.readEmail(email);
   if (emailExist) {
     res.locals.userFromEmail = emailExist;
@@ -24,7 +25,7 @@ async function emailExist(req: Request, res: Response, next: NextFunction) {
   next();
 }
 async function usernameExist(req: Request, res: Response, next: NextFunction) {
-  const { username = '' } = req.body.data;
+  const { username = "" } = req.body.data;
   const usernameExist = await service.readUsername(username);
   if (usernameExist) {
     res.locals.userFromUsername = usernameExist;
@@ -33,11 +34,11 @@ async function usernameExist(req: Request, res: Response, next: NextFunction) {
 }
 
 function isUserAvailable(req: Request, res: Response, next: NextFunction) {
-  const { userFromEmail = '', userFromUsername = '' } = res.locals;
+  const { userFromEmail = "", userFromUsername = "" } = res.locals;
   if (userFromEmail || userFromUsername) {
     const message = userFromEmail
-      ? 'Email is already in use.'
-      : 'Username is already in use.';
+      ? "Email is already in use."
+      : "Username is already in use.";
     return next({ status: 400, message });
   }
   next();
@@ -54,7 +55,7 @@ async function encryptPassword(
   if (!SALT) {
     return next({
       status: 500,
-      message: 'Error creating user. Please try again.',
+      message: "Error creating user. Please try again.",
     });
   }
   const hashedPassword = await bcrypt
@@ -63,7 +64,7 @@ async function encryptPassword(
   if (saltError) {
     return next({
       status: 500,
-      message: 'Error encrypting password. Please try again.',
+      message: "Error encrypting password. Please try again.",
     });
   }
   const { data } = req.body;
@@ -83,7 +84,7 @@ async function createUser(req: Request, res: Response, next: NextFunction) {
     res.locals.user = createdUser;
     return next();
   }
-  next({ stauts: 500, message: 'Unable to crete user. Please try again' });
+  next({ stauts: 500, message: "Unable to crete user. Please try again" });
 }
 
 async function generateAccessToken(
@@ -96,13 +97,17 @@ async function generateAccessToken(
   const { TOKEN_KEY } = process.env;
   if (TOKEN_KEY) {
     const token = sign({ user_id, email }, TOKEN_KEY, {
-      expiresIn: '1d',
+      expiresIn: "1d",
     });
+    res.setHeader(
+      "Set-Cookie",
+      cookie.serialize("foo", "bar", { httpOnly: true })
+    );
     res.status(201).json({ data: token });
   }
   return next({
     status: 500,
-    message: 'Token key is missing. Please try again',
+    message: "Token key is missing. Please try again",
   });
 }
 
