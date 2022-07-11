@@ -1,19 +1,20 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
-import { Link } from 'react-router-dom';
-import Form from '../../components/Form/Form';
-import FormInput from '../../components/FormInput/FormInput';
-import { User } from '../../ts/interfaces/User';
-import { createUser } from '../../api/apiUsers';
+import { ChangeEvent, FormEvent, useState } from "react";
+import { Link } from "react-router-dom";
+import Form from "../../components/Form/Form";
+import FormInput from "../../components/FormInput/FormInput";
+import { User } from "../../ts/interfaces/User";
+import { createUser } from "../../api/apiUsers";
+import { RegisterUser } from "../../ts/interfaces/RegisterUser";
 const Register = () => {
   const defaultRegister = {
-    first_name: '',
-    last_name: '',
-    username: '',
-    email: '',
-    password: '',
-    passwordConfirm: '',
+    first_name: "",
+    last_name: "",
+    username: "",
+    email: "",
+    password: "",
+    passwordConfirm: "",
   };
-  const [register, setRegister] = useState(defaultRegister);
+  const [register, setRegister] = useState<RegisterUser>(defaultRegister);
   const [error, setError] = useState<any>({});
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -28,16 +29,16 @@ const Register = () => {
       event.preventDefault();
       const abortController = new AbortController();
       if (register.password !== register.passwordConfirm) {
-        throw { message: 'Passwords does not match' };
+        throw { message: "Passwords does not match" };
       }
-      const user: User = {
+      const userToCreate: RegisterUser = {
         first_name: register.first_name,
         last_name: register.last_name,
         username: register.username,
         email: register.email,
         password: register.password,
       };
-      const response = await createUser(user, abortController.signal);
+      const response = await createUser(userToCreate, abortController.signal);
       console.log(response);
     } catch (error) {
       setError(error);
