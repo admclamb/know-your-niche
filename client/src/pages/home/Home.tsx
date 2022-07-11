@@ -10,6 +10,7 @@ const Home = () => {
         <div className="row gx-5">
           <section className="col-12 col-lg-8">
             <Card margin={"mb-4"}>
+              <h3>HEllo</h3>
               <WelcomeCard />
             </Card>
             <Card>
